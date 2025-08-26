@@ -1,0 +1,589 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keico - Data Analyst &amp; Graphic Designer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        pink: '#EC4899',
+                        cyan: '#06B6D4',
+                        purple: '#8B5CF6',
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'bounce-slow': 'bounce 4s ease-in-out infinite',
+                        'pulse-rainbow': 'pulseRainbow 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1.2s ease-out',
+                        'rainbow-flow': 'rainbowFlow 6s linear infinite',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite alternate',
+                        'morph': 'morph 6s ease-in-out infinite',
+                        'sparkle-dance': 'sparkleDance 4s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            33% { transform: translateY(-25px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(-10px) rotate(240deg) scale(0.9); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulseRainbow {
+            0%, 100% { background: linear-gradient(135deg, #6366F1, #10B981); }
+            33% { background: linear-gradient(135deg, #EC4899, #F59E0B); }
+            66% { background: linear-gradient(135deg, #8B5CF6, #06B6D4); }
+        }
+        @keyframes rainbowFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes glowPulse {
+            from { 
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+                filter: brightness(1);
+            }
+            to { 
+                box-shadow: 0 0 35px rgba(236, 72, 153, 0.6), 0 0 50px rgba(16, 185, 129, 0.4);
+                filter: brightness(1.1);
+            }
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        @keyframes sparkleDance {
+            0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366F1, #10B981, #EC4899, #F59E0B, #8B5CF6, #06B6D4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowFlow 6s ease-in-out infinite;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .rainbow-border {
+            background: linear-gradient(45deg, #6366F1, #10B981, #EC4899, #F59E0B, #8B5CF6, #06B6D4);
+            background-size: 400% 400%;
+            animation: rainbowFlow 4s ease-in-out infinite;
+            padding: 3px;
+        }
+        
+        .rainbow-border-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: inherit;
+        }
+        
+        .tech-mesh {
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 50px 50px, rgba(236, 72, 153, 0.1) 2px, transparent 2px);
+            background-size: 30px 30px, 30px 30px, 60px 60px;
+        }
+        
+        .hover-transform {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-transform:hover {
+            transform: translateY(-15px) scale(1.08) rotateY(5deg);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .blob-morph {
+            animation: morph 6s ease-in-out infinite;
+        }
+        
+        .geometric-hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .geometric-star {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        
+        .geometric-diamond {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .sparkle-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sparkle-container::before,
+        .sparkle-container::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #F59E0B 0%, transparent 70%);
+            border-radius: 50%;
+            animation: sparkleDance 4s ease-in-out infinite;
+        }
+        
+        .sparkle-container::before {
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .sparkle-container::after {
+            top: 70%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+    </style>
+<script src="https://puc.poecdn.net/authenticated_preview_page/syncedState.bd4eeeb8e8e02052ee92.js"></script></head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 via-pink-50 to-yellow-50 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/85 backdrop-blur-lg z-50 border-b border-purple-200/50 shadow-lg">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-3xl font-bold gradient-text">Keico</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-all duration-300 font-semibold transform hover:scale-110">About</a>
+                    <a href="#skills" class="text-gray-700 hover:text-blue-600 transition-all duration-300 font-semibold transform hover:scale-110">Skills</a>
+                    <a href="#projects" class="text-gray-700 hover:text-pink-600 transition-all duration-300 font-semibold transform hover:scale-110">Projects</a>
+                    <a href="#hobbies" class="text-gray-700 hover:text-green-600 transition-all duration-300 font-semibold transform hover:scale-110">Hobbies</a>
+                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition-all duration-300 font-semibold transform hover:scale-110">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden tech-mesh sparkle-container">
+        <!-- Enhanced floating shapes -->
+        <div class="absolute top-20 left-12 w-24 h-24 bg-gradient-to-r from-purple-400 to-pink-500 blob-morph animate-float opacity-70"></div>
+        <div class="absolute bottom-32 right-16 w-20 h-20 bg-gradient-to-r from-blue-400 to-cyan-500 geometric-hexagon animate-float opacity-65" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/3 right-12 w-28 h-28 bg-gradient-to-r from-green-400 to-blue-600 geometric-star animate-float opacity-55" style="animation-delay: -4s;"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-16 h-16 bg-gradient-to-r from-yellow-400 to-red-500 geometric-diamond animate-float opacity-75" style="animation-delay: -1s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-18 h-18 bg-gradient-to-r from-red-400 to-pink-600 rounded-full animate-bounce-slow opacity-60" style="animation-delay: -3s;"></div>
+        <div class="absolute top-3/4 right-1/3 w-14 h-14 bg-gradient-to-r from-indigo-400 to-purple-600 blob-morph animate-float opacity-65" style="animation-delay: -5s;"></div>
+        
+        <div class="text-center px-6 animate-fade-in relative z-10">
+            <div class="mb-12">
+                <h1 class="text-7xl md:text-9xl font-bold mb-6 gradient-text animate-slide-up">Keico</h1>
+                <div class="space-y-4 animate-slide-up" style="animation-delay: 0.2s;">
+                    <p class="text-3xl md:text-4xl text-gray-800 font-light">
+                        <span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent font-bold">Data Analyst</span> &amp; 
+                        <span class="bg-gradient-to-r from-pink-600 to-red-600 bg-clip-text text-transparent font-bold">Graphic Designer</span>
+                    </p>
+                    <p class="text-xl text-gray-700 animate-slide-up" style="animation-delay: 0.4s;">
+                        🇭🇰 Hong Kong • 📊 Pattern Recognition Expert • 🎨 Visual Storyteller
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up" style="animation-delay: 0.6s;">
+                <a href="#projects" class="px-10 py-5 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-gray-900 rounded-full hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-glow-pulse font-bold text-lg">
+                    🚀 Explore My Work
+                </a>
+                <a href="#contact" class="px-10 py-5 bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 text-gray-900 rounded-full hover:shadow-2xl hover:scale-110 transition-all duration-300 font-bold text-lg">
+                    💼 Hire Me Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white/50 backdrop-blur-sm">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6 gradient-text">About Me</h2>
+                <div class="w-32 h-3 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="rainbow-border rounded-3xl hover-transform">
+                <div class="rainbow-border-content p-10 md:p-16 rounded-3xl">
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <div class="w-64 h-64 bg-gradient-to-br from-purple-400 via-pink-400 via-blue-400 to-cyan-400 rounded-full flex items-center justify-center relative overflow-hidden sparkle-container">
+                            <div class="absolute inset-4 bg-white rounded-full flex items-center justify-center shadow-inner">
+                                <svg class="w-32 h-32" fill="url(#aboutGradient)" viewBox="0 0 24 24">
+                                    <defs>
+                                        <linearGradient id="aboutGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1"></stop>
+                                            <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1"></stop>
+                                            <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V9H13V6H11M11,11V18H13V11H11Z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-center md:text-left space-y-6">
+                            <p class="text-xl text-gray-700 leading-relaxed font-light">
+                                Hi! I'm <span class="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Keico</span>, a passionate data analyst and <span class="font-bold text-pink-600">graphic designer</span> from Hong Kong. I excel at finding meaningful patterns in data and transforming complex information into compelling visual narratives that drive business decisions.
+                            </p>
+                            <p class="text-xl text-gray-700 leading-relaxed font-light">
+                                My unique combination of analytical skills and creative design expertise allows me to bridge the gap between raw data and actionable insights. I'm <span class="font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">actively seeking new opportunities</span> to make a significant impact in data-driven organizations.
+                            </p>
+                            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                                <span class="px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-gray-900 rounded-full text-sm font-bold shadow-lg transform hover:scale-105 transition-all">📊 Data Analysis</span>
+                                <span class="px-6 py-3 bg-gradient-to-r from-pink-500 to-red-500 text-gray-900 rounded-full text-sm font-bold shadow-lg transform hover:scale-105 transition-all">🎨 Graphic Design</span>
+                                <span class="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-gray-900 rounded-full text-sm font-bold shadow-lg transform hover:scale-105 transition-all">🇭🇰 Hong Kong</span>
+                                <span class="px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-gray-900 rounded-full text-sm font-bold shadow-lg transform hover:scale-105 transition-all">💼 Job Seeking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-gradient-to-br from-purple-50 via-pink-50 via-blue-50 to-cyan-50 tech-mesh">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6 gradient-text">My Skills</h2>
+                <div class="w-32 h-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-effect rounded-3xl p-10 hover-transform group border-2 border-transparent hover:border-yellow-300 transition-all duration-500 sparkle-container">
+                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 geometric-hexagon flex items-center justify-center mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto">
+                        <svg class="w-10 h-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19.14,7.5A2.86,2.86 0 0,1 22,10.36V14.14A2.86,2.86 0 0,1 19.14,17H4.86A2.86,2.86 0 0,1 2,14.14V10.36A2.86,2.86 0 0,1 4.86,7.5H19.14M19.14,9H4.86A0.86,0.86 0 0,0 4,9.86V14.64A0.86,0.86 0 0,0 4.86,15.5H19.14A0.86,0.86 0 0,0 20,14.64V9.86A0.86,0.86 0 0,0 19.14,9Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Python</h3>
+                    <p class="text-gray-600 font-light text-center">Advanced data analysis, machine learning, and automation</p>
+                </div>
+                
+                <div class="glass-effect rounded-3xl p-10 hover-transform group border-2 border-transparent hover:border-green-300 transition-all duration-500 sparkle-container">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 geometric-hexagon flex items-center justify-center mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto">
+                        <svg class="w-10 h-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Excel</h3>
+                    <p class="text-gray-600 font-light text-center">Expert data manipulation, analysis, and visualization</p>
+                </div>
+                
+                <div class="glass-effect rounded-3xl p-10 hover-transform group border-2 border-transparent hover:border-purple-300 transition-all duration-500 sparkle-container">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 geometric-hexagon flex items-center justify-center mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto">
+                        <svg class="w-10 h-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3,3V21H21V3H3M4,4H20V20H4V4M5,5V19H19V5H5M6,6H18V18H6V6M9,8V16H15V8H9M10,9H14V15H10V9Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">PowerBI</h3>
+                    <p class="text-gray-600 font-light text-center">Interactive dashboards and business intelligence</p>
+                </div>
+                
+                <div class="glass-effect rounded-3xl p-10 hover-transform group border-2 border-transparent hover:border-pink-300 transition-all duration-500 sparkle-container">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 geometric-hexagon flex items-center justify-center mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 mx-auto">
+                        <svg class="w-10 h-10 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6A2,2 0 0,1 10,4A2,2 0 0,1 12,2M21,9V7L15,7.5V9H21ZM3,7V9H9V7.5L3,7ZM15,16L18,19H13V22H11V19H6L9,16H15M12,7A3,3 0 0,1 15,10V14H9V10A3,3 0 0,1 12,7Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Adobe Creative Suite</h3>
+                    <p class="text-gray-600 font-light text-center">Professional design and visual communication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-white/60 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6 gradient-text">My Projects</h2>
+                <div class="w-32 h-3 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="rainbow-border rounded-3xl hover-transform group">
+                    <div class="rainbow-border-content rounded-3xl overflow-hidden">
+                        <div class="h-56 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center relative sparkle-container">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
+                            <svg class="w-20 h-20 text-gray-900 group-hover:scale-125 transition-transform duration-300 relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.7L22,12V6H16Z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">📈 Stock Price Analysis</h3>
+                            <p class="text-gray-600 mb-6 font-light leading-relaxed">Comprehensive analysis of stock market trends using Python for data visualization and advanced pattern recognition.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-blue-100 text-blue-700 text-sm rounded-full font-medium">Python</span>
+                                <span class="px-4 py-2 bg-purple-100 text-purple-700 text-sm rounded-full font-medium">Pandas</span>
+                                <span class="px-4 py-2 bg-green-100 text-green-700 text-sm rounded-full font-medium">Finance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rainbow-border rounded-3xl hover-transform group">
+                    <div class="rainbow-border-content rounded-3xl overflow-hidden">
+                        <div class="h-56 bg-gradient-to-br from-green-400 via-teal-500 to-blue-500 flex items-center justify-center relative sparkle-container">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
+                            <svg class="w-20 h-20 text-gray-900 group-hover:scale-125 transition-transform duration-300 relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">🌍 Winter Data Analysis</h3>
+                            <p class="text-gray-600 mb-6 font-light leading-relaxed">Comprehensive winter weather data analysis project using Python to analyze Hong Kong climate patterns and seasonal trends.</p>
+                            <div class="flex flex-wrap gap-3 mb-4">
+                                <span class="px-4 py-2 bg-green-100 text-green-700 text-sm rounded-full font-medium">Weather Data</span>
+                                <span class="px-4 py-2 bg-blue-100 text-blue-700 text-sm rounded-full font-medium">Python Analysis</span>
+                                <span class="px-4 py-2 bg-teal-100 text-teal-700 text-sm rounded-full font-medium">Hong Kong</span>
+                            </div>
+                            <a href="https://github.com/keicowong/Winter-data-analysis/" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-900 text-yellow-400 rounded-full hover:bg-gray-800 transition-all duration-300 font-medium text-sm">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"></path>
+                                </svg>
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rainbow-border rounded-3xl hover-transform group">
+                    <div class="rainbow-border-content rounded-3xl overflow-hidden">
+                        <div class="h-56 bg-gradient-to-br from-orange-400 via-red-500 to-pink-500 flex items-center justify-center relative sparkle-container">
+                            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
+                            <svg class="w-20 h-20 text-gray-900 group-hover:scale-125 transition-transform duration-300 relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"></path>
+                            </svg>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">🎯 Stock Price Prediction</h3>
+                            <p class="text-gray-600 mb-6 font-light leading-relaxed">Advanced machine learning models using Python and Pandas to predict future stock prices from historical data.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-orange-100 text-orange-700 text-sm rounded-full font-medium">Machine Learning</span>
+                                <span class="px-4 py-2 bg-red-100 text-red-700 text-sm rounded-full font-medium">Prediction</span>
+                                <span class="px-4 py-2 bg-yellow-100 text-yellow-700 text-sm rounded-full font-medium">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="py-24 bg-gradient-to-br from-pink-50 via-purple-50 via-indigo-50 to-blue-50 tech-mesh">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold mb-6 gradient-text">My Hobbies</h2>
+                <div class="w-32 h-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="text-center group">
+                    <div class="w-32 h-32 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
+                        <svg class="w-16 h-16 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">🔬 Learning Science</h3>
+                    <p class="text-gray-600 font-light text-lg leading-relaxed">Passionate about discovering new scientific concepts and staying updated with cutting-edge research in technology, data science, and innovation</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-32 h-32 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-2xl">
+                        <svg class="w-16 h-16 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M5,5H10A1,1 0 0,1 11,6V9A1,1 0 0,1 10,10H5A1,1 0 0,1 4,9V6A1,1 0 0,1 5,5M14,5H19A1,1 0 0,1 20,6V9A1,1 0 0,1 19,10H14A1,1 0 0,1 13,9V6A1,1 0 0,1 14,5M5,14H10A1,1 0 0,1 11,15V18A1,1 0 0,1 10,19H5A1,1 0 0,1 4,18V15A1,1 0 0,1 5,14M14,14H19A1,1 0 0,1 20,15V18A1,1 0 0,1 19,19H14A1,1 0 0,1 13,18V15A1,1 0 0,1 14,14Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-6 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">🏊‍♂️ Swimming</h3>
+                    <p class="text-gray-600 font-light text-lg leading-relaxed">Staying active and maintaining physical wellness while enjoying the meditative and refreshing aspects of swimming in Hong Kong's beautiful facilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gradient-to-br from-purple-600 via-pink-600 via-red-500 to-orange-500 relative overflow-hidden">
+        <!-- Enhanced floating shapes -->
+        <div class="absolute top-16 left-16 w-20 h-20 bg-white/20 rounded-full animate-bounce-slow"></div>
+        <div class="absolute bottom-16 right-16 w-24 h-24 bg-white/15 geometric-hexagon animate-float"></div>
+        <div class="absolute top-1/2 left-12 w-16 h-16 bg-white/25 geometric-star animate-float" style="animation-delay: -2s;"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl font-bold mb-8 text-gray-900">Let's Create Data Magic Together! 🚀</h2>
+            <p class="text-2xl text-gray-800 mb-16 font-light">Ready to transform complex data into stunning visual insights? I'm actively seeking exciting opportunities to make a real impact!</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+                <div class="bg-white/20 rounded-3xl p-8 backdrop-blur-lg border border-white/30 hover-transform sparkle-container">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <svg class="w-10 h-10 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">📧 Email</h3>
+                    <p class="text-gray-800 font-light text-lg">keico@example.com</p>
+                </div>
+                
+                <div class="bg-white/20 rounded-3xl p-8 backdrop-blur-lg border border-white/30 hover-transform sparkle-container">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">💼 LinkedIn</h3>
+                    <p class="text-gray-800 font-light text-lg">linkedin.com/in/keico</p>
+                </div>
+                
+                <div class="bg-white/20 rounded-3xl p-8 backdrop-blur-lg border border-white/30 hover-transform sparkle-container">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <svg class="w-10 h-10 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">🌏 Location</h3>
+                    <p class="text-gray-800 font-light text-lg">Hong Kong</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="mailto:keico@example.com" class="inline-block px-12 py-6 bg-white text-purple-600 rounded-full hover:bg-gray-100 hover:scale-110 transition-all duration-300 font-bold text-xl shadow-2xl">
+                    🎯 Start Our Collaboration!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center">
+        <p class="text-lg font-light">© 2024 Keico. Crafted with 💜 passion for data visualization and colorful design innovation.</p>
+    </footer>
+
+    <script>
+        // Dark mode detection (maintaining light theme as requested)
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                console.log('Mobile menu clicked');
+            });
+        }
+
+        // Enhanced intersection observer for animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Advanced parallax effect for floating shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.animate-float, .animate-bounce-slow');
+            shapes.forEach((shape, index) => {
+                const speed = 0.2 + (index * 0.05);
+                const yPos = -(scrolled * speed);
+                const rotation = scrolled * 0.05;
+                const scale = 1 + Math.sin(scrolled * 0.01) * 0.1;
+                shape.style.transform = `translateY(${yPos}px) rotate(${rotation}deg) scale(${scale})`;
+            });
+        });
+
+        // Enhanced glow pulse effect
+        setInterval(() => {
+            const glowElements = document.querySelectorAll('.animate-glow-pulse');
+            glowElements.forEach(element => {
+                element.style.animation = 'none';
+                setTimeout(() => {
+                    element.style.animation = 'glowPulse 2s ease-in-out infinite alternate';
+                }, 10);
+            });
+        }, 3000);
+
+        // Random animation delays for organic feel
+        document.querySelectorAll('.animate-float').forEach((element, index) => {
+            element.style.animationDelay = `${Math.random() * 4}s`;
+        });
+
+        // Add sparkle effects dynamically
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'absolute w-1 h-1 bg-yellow-400 rounded-full animate-sparkleDance';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            return sparkle;
+        }
+
+        // Add sparkles to sparkle containers
+        document.querySelectorAll('.sparkle-container').forEach(container => {
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const sparkle = createSparkle();
+                    container.appendChild(sparkle);
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 4000);
+                }, i * 1000);
+            }
+        });
+    </script>
+
+
+</body></html>
